@@ -17,7 +17,8 @@ $primary-color: #6f42c1;
 $secondary-color: #4582ec;
 $grey: #f8f9fa;
 $white: #fff;
-$shadow: rgba(79, 77, 79, 1);
+$shadow1: rgba(0, 0, 0, 0.3);
+$shadow2: rgba(0, 0, 0, 0.06);
 
 h1,
 h2,
@@ -52,7 +53,7 @@ h6 {
 .upload-container {
   background: $grey;
   border-radius: .3rem;
-  box-shadow: 0 2px 10px 0 $shadow;
+  box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
   margin-top: -7rem;
 }
 
@@ -98,5 +99,18 @@ h6 {
     content: '\f12b';
     font-family: 'Ionicons';
     margin: 0 1rem;
+  }
+}
+
+.upload-list-container {
+  box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+    }
   }
 }

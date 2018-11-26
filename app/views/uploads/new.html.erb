@@ -8,4 +8,34 @@
       <%= render 'form', upload: @upload %>
     </div>
   </div>
+  <div class="container-fluid my-5">
+    <div class="upload-list-container col-12 col-md-8 mx-auto p-4">
+      <h5 class="text-center text-center hero-subtext text-dark">File Upload List</h5>
+      <table class="table table-hover table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Filename</th>
+            <th scope="col">Time Uploaded</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @uploads.each do |upload| %>
+            <tr>
+              <td>
+                <%= upload[:file].filename %>
+              </td>
+              <td>
+                <%# to_formatted_s aliased as to_s %>
+                <%= upload[:file].created_at.strftime("%b %d, %Y") %>
+              </td>
+              <td>
+                <%= link_to "Download File", rails_blob_path(upload[:file], disposition: 'attachment'), class: "btn-link" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
