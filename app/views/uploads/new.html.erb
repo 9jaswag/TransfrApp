@@ -1,2 +1,11 @@
-<h1>Uploads#new</h1>
-<p>Find me in app/views/uploads/new.html.erb</p>
+<div class="container-fluid position-relative p-0">
+  <div class="hero-gradient">
+    <h1 class="text-center pt-5 hero-heading">TransfrApp</h1>
+    <h5 class="text-center hero-subtext">free and secure file transfer</h5>
+  </div>
+  <div class="container-fluid position-relative">
+    <div class="upload-container col-12 col-md-8 col-lg-6 mx-auto text-center p-2">
+      <%= render 'form', upload: @upload %>
+    </div>
+  </div>
+</div>

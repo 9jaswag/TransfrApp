@@ -1,0 +1,14 @@
+<%= form_with(model: upload) do |form| %>
+  <%# errors %>
+  <div class="">
+    <%= form.file_field :files, multiple: true, direct_upload: true, required: true %>
+    <%= form.label :files, '', class: 'icon ion-ios-cloud-upload' do %>
+      <span>click the icon to select files</span>
+    <% end %>
+    <div id="selected-files"></div>
+
+    <div class="actions mt-5">
+      <%= form.submit "Upload", class: "btn btn-primary btn-lg btn-custom" %>
+    </div>
+  </div>
+<% end %>
