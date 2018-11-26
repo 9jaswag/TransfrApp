@@ -83,3 +83,20 @@ h6 {
   font-weight: 300;
   text-transform: uppercase;
 }
+
+#selected-files {
+  height: 5rem;
+  overflow: scroll;
+  text-align: left;
+}
+
+.selected-file {
+  font-size: .8rem;
+  margin-bottom: .3rem;
+
+  &::before {
+    content: '\f12b';
+    font-family: 'Ionicons';
+    margin: 0 1rem;
+  }
+}
