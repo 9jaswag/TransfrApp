@@ -6,7 +6,7 @@ class UploadsController < ApplicationController
   def new
     @upload = Upload.new
     @uploads = [].tap do |files|
-      Upload.all.each { |upload| upload.files.each { |file| files << { file: file } } }
+      Upload.with_attached_files.each { |upload| upload.files.each { |file| files << { file: file } } }
     end
   end
 
@@ -21,7 +21,7 @@ class UploadsController < ApplicationController
   end
 
   def destroy
-    upload = Upload.find(params[:id])
+    upload = Upload.with_attached_files.find(params[:id])
     if upload.files.purge
       upload.destroy
       flash[:success] = 'File deleted successful!'
