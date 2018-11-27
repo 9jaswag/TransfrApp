@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import 'bootstrap';
+@import "bootstrap";
 
 $primary-color: #6f42c1;
 $secondary-color: #4582ec;
@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .hero-gradient {
@@ -52,7 +52,7 @@ h6 {
 
 .upload-container {
   background: $grey;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
   margin-top: -7rem;
 }
@@ -62,11 +62,11 @@ h6 {
 }
 
 #upload_files {
-  height: .1px;
+  height: 0.1px;
   opacity: 0;
   overflow: hidden;
   position: absolute;
-  width: .1px;
+  width: 0.1px;
   z-index: -1;
 
   + label {
@@ -74,13 +74,13 @@ h6 {
 
     span {
       display: block;
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
   }
 }
 
 .btn-custom {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   font-weight: 300;
   text-transform: uppercase;
 }
@@ -89,18 +89,22 @@ h6 {
   height: 5rem;
   overflow: scroll;
   text-align: left;
-}
 
-.selected-file {
-  font-size: .8rem;
-  margin-bottom: .3rem;
-
-  &::before {
-    content: '\f12b';
-    font-family: 'Ionicons';
-    margin: 0 1rem;
+  span {
+    padding-left: 1rem;
   }
 }
+
+// .selected-file {
+//   font-size: .8rem;
+//   margin-bottom: .3rem;
+
+//   &::before {
+//     content: '\f12b';
+//     font-family: 'Ionicons';
+//     margin: 0 1rem;
+//   }
+// }
 
 .upload-list-container {
   box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
@@ -113,4 +117,16 @@ h6 {
       display: inline-block;
     }
   }
+}
+
+.progress {
+  margin-bottom: 0.2rem;
+}
+
+.direct-upload--error {
+  border-color: red;
+}
+
+input[type="file"][data-direct-upload-url][disabled] {
+  display: none;
 }
