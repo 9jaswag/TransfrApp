@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 class Upload < ApplicationRecord
   has_many_attached :files
 
   before_save :remove_duplicates
+
+  private
 
   def remove_duplicates
     files.attachments.each do |file|
@@ -10,9 +14,7 @@ class Upload < ApplicationRecord
           upload.files.select { |existing_file| list << existing_file.blob.filename }
         end
       end
-      if files.include?(file.blob.filename)
-        file.purge
-      end
+      file.purge if files.include?(file.blob.filename)
     end
   end
   # ActiveStorage::Blob.service.exist?((file.blob.key))
