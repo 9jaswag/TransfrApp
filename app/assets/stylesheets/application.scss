@@ -11,4 +11,145 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import 'bootstrap';
+@import "bootstrap";
+
+$primary-color: #6f42c1;
+$secondary-color: #4582ec;
+$grey: #f8f9fa;
+$white: #fff;
+$shadow1: rgba(0, 0, 0, 0.3);
+$shadow2: rgba(0, 0, 0, 0.06);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+.alert,
+.progress-bar {
+  font-family: "Rubik", sans-serif;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+  height: 50vh;
+  width: 100vw;
+}
+
+.hero-heading {
+  color: $white;
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 4rem;
+}
+
+.hero-subtext {
+  color: $white;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.875rem;
+}
+
+.upload-container {
+  background: $grey;
+  border-radius: 0.3rem;
+  box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
+  margin-top: -7rem;
+}
+
+.ion-ios-cloud-upload {
+  font-size: 64px;
+}
+.ion-ios-cloud-download,
+.ion-ios-trash {
+  color: $secondary-color;
+  font-size: 16px !important;
+}
+
+.ion-ios-trash {
+  color: #f44336;
+  margin-left: 1rem;
+}
+
+#upload_files {
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0.1px;
+  z-index: -1;
+
+  + label {
+    cursor: pointer;
+
+    span {
+      display: block;
+      font-size: 0.7rem;
+    }
+  }
+}
+
+.btn-custom {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+#selected-files {
+  height: 5rem;
+  overflow: scroll;
+  text-align: left;
+
+  span {
+    padding-left: 1rem;
+  }
+}
+
+// .selected-file {
+//   font-size: .8rem;
+//   margin-bottom: .3rem;
+
+//   &::before {
+//     content: '\f12b';
+//     font-family: 'Ionicons';
+//     margin: 0 1rem;
+//   }
+// }
+
+.upload-list-container {
+  box-shadow: 0 25px 20px -20px $shadow1, 0 0 15px $shadow2;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.progress {
+  margin-bottom: 0.2rem;
+}
+
+.direct-upload--error {
+  border-color: red;
+}
+
+input[type="file"][data-direct-upload-url][disabled] {
+  display: none;
+}
+
+table {
+  font-size: 0.9rem;
+  tbody {
+    font-size: 0.7rem;
+    tr {
+      cursor: pointer;
+    }
+  }
+}

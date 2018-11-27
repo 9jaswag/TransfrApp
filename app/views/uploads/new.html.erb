@@ -1,0 +1,48 @@
+<div class="container-fluid position-relative p-0">
+  <div class="hero-gradient">
+    <h1 class="text-center pt-5 hero-heading">Transfr</h1>
+    <h5 class="text-center hero-subtext">free and secure file transfer</h5>
+  </div>
+  <div class="container-fluid position-relative">
+    <div class="upload-container col-12 col-md-8 col-lg-6 mx-auto text-center p-2">
+      <%= render 'form', upload: @upload %>
+    </div>
+  </div>
+  <div class="container-fluid my-5">
+    <div class="upload-list-container col-12 col-md-8 mx-auto p-4">
+      <h5 class="text-center text-center hero-subtext text-dark">File Transfer List</h5>
+      <% unless @uploads.empty? %>  
+        <div class="table-responsive">
+          <table class="table table-hover table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Filename</th>
+                <th scope="col">Time Uploaded</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @uploads.each do |upload| %>
+                <tr>
+                  <td>
+                    <%= upload[:file].filename %>
+                  </td>
+                  <td>
+                    <%# to_formatted_s aliased as to_s %>
+                    <%= upload[:file].created_at.strftime("%b %d, %Y") %>
+                  </td>
+                  <td>
+                    <%= link_to "", rails_blob_path(upload[:file], disposition: 'attachment'), class: "icon ion-ios-cloud-download" %>
+                    <%= link_to "", upload_path(upload[:file]), method: :delete, class: "icon ion-ios-trash" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <div>
+      <% else %>
+        <h3 class="text-center text-dark mt-5">No transferred files</h3>
+      <% end %>
+    </div>
+  </div>
+</div>
