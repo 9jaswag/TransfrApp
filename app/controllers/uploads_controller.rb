@@ -13,10 +13,10 @@ class UploadsController < ApplicationController
     upload = Upload.new(upload_params)
     if upload.save
       redirect_to root_path
-      flash[:success] = "File(s) successfully uploaded."
+      flash[:success] = "File upload successful!"
     else
       redirect_to root_path
-      flash[:danger] = "An error occurred. Please try again."
+      flash[:danger] = "An error occurred. Please try again!"
     end
   end
 
@@ -25,6 +25,6 @@ class UploadsController < ApplicationController
 
   private
   def upload_params
-    params.require(:upload).permit(:name, files: [])
+    params.require(:upload).permit(files: [])
   end
 end
