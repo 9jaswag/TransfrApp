@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class UploadsController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     @upload = Upload.new
@@ -12,18 +13,29 @@ class UploadsController < ApplicationController
   def create
     upload = Upload.new(upload_params)
     if upload.save
-      redirect_to root_path
-      flash[:success] = "File upload successful!"
+      flash[:success] = 'File upload successful!'
     else
-      redirect_to root_path
-      flash[:danger] = "An error occurred. Please try again!"
+      flash[:danger] = 'An error occurred. Please try again!'
     end
+    redirect_to root_path
   end
 
   def destroy
+    upload = Upload.find(params[:id])
+    if upload.files.purge
+      upload.destroy
+      flash[:success] = 'File deleted successful!'
+    else
+      flash[:danger] = 'An error occurred. Please try again!'
+    end
+    redirect_to root_path
+  rescue StandardError => error
+    flash[:danger] = 'File does not exist!'
+    redirect_to root_path
   end
 
   private
+
   def upload_params
     params.require(:upload).permit(files: [])
   end
