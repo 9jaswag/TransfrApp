@@ -11,6 +11,7 @@ document.addEventListener("turbolinks:load", event => {
         let progress = document.createElement("div");
         progress.className = "progress-bar progress-bar-striped progress-bar-animated bg-success";
         progress.id = `direct-upload-progress-${index + 1}`;
+        progress.dataset.filename = fileName;
         progress.style.width = "0%";
         let fileEntrySpan = document.createElement("span");
         fileEntrySpan.innerHTML = fileName;
@@ -23,10 +24,8 @@ document.addEventListener("turbolinks:load", event => {
 });
 
 addEventListener("direct-upload:progress", event => {
-  const { id, progress } = event.detail;
-  const progressElement = document.getElementById(
-    `direct-upload-progress-${id}`
-  );
+  const { progress, file } = event.detail;
+  const progressElement = document.querySelectorAll(`[data-filename='${file.name}']`)[0];
   if (progressElement) {
     progressElement.style.width = `${progress}%`;
     progressElement.firstElementChild.style.color = "white";
