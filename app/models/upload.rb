@@ -21,7 +21,9 @@ class Upload < ApplicationRecord
         duplicate_count += 1
       end
     end
-    self.flash_notice = "#{duplicate_count} uploaded #{'file'.pluralize(duplicate_count)} already exists & #{duplicate_count <= 1 ? 'was' : 'were'} not uploaded"
+    if duplicate_count > 0
+      self.flash_notice = "#{duplicate_count} uploaded #{'file'.pluralize(duplicate_count)} already exists & #{duplicate_count <= 1 ? 'was' : 'were'} not uploaded"
+    end
   end
   # ActiveStorage::Blob.service.exist?((file.blob.key))
 end
