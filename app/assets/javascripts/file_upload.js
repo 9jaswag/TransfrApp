@@ -27,8 +27,10 @@ addEventListener("direct-upload:progress", event => {
   const progressElement = document.getElementById(
     `direct-upload-progress-${id}`
   );
-  progressElement.style.width = `${progress}%`;
-  progressElement.firstElementChild.style.color = "white";
+  if (progressElement) {
+    progressElement.style.width = `${progress}%`;
+    progressElement.firstElementChild.style.color = "white";
+  }
 });
 
 addEventListener("direct-upload:error", event => {
