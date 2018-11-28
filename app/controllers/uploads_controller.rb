@@ -14,7 +14,7 @@ class UploadsController < ApplicationController
     upload = Upload.new(upload_params)
     if upload.save
       flash[:success] = 'File upload successful!'
-      flash[:info] = upload.flash_notice unless upload.flash_notice.empty?
+      flash[:info] = upload.flash_notice unless upload.flash_notice.blank?
     else
       flash[:danger] = 'An error occurred. Please try again!'
     end
